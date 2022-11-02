@@ -8,7 +8,14 @@ namespace MWO
 {
     public class CarController : ICarController
     {
+
+        public readonly List<Car> _car = new()
+        {
+            new Car{Id=1,Brand="Audi",Model="A4",Price=322222}
+        };
+
         private List<Car> cars = new();
+
         public bool CreateCar(Car car)
         {
             if(cars.Contains(car)) return false;

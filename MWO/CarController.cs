@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MWO
 {
-    internal class CarController : ICarController
+    public class CarController : ICarController
     {
-        private readonly List<Car> _car = new()
+        public readonly List<Car> _car = new()
         {
             new Car{Id=1,Brand="Audi",Model="A4",Price=322222}
         };

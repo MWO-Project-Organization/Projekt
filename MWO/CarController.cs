@@ -1,39 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace MWO
+namespace MWO;
+
+public class CarController : ICarController
 {
-    public class CarController : ICarController
+    public CarController()
     {
-        private List<Car> cars = new();
-        public bool CreateCar(Car car)
-        {
-            if(cars.Contains(car)) return false;
-            cars.Add(car);
-            return true;
-        }
+        _cars = new List<Car>();
+    }
 
-        public Car GetCar(int carId)
-        {
-            return cars.FirstOrDefault(x => x.Id == carId);
-        }
+    private List<Car> _cars;
 
-        public bool RemoveCar(int carId)
-        {
-            if(cars.FirstOrDefault(x => x.Id == carId) is null) return false;
-            cars.Remove(GetCar(carId));
-            return true;
-        }
+    bool CreateCar(Car car)
+    {
+        _cars.Add(car);
+        return true;
+    }
 
-        public bool UpdateCar(int carId, Car car)
-        {
-            if(cars.FirstOrDefault(x => x.Id == carId) is null) return false;
-            cars.Remove(GetCar(carId));
-            if(!CreateCar(car)) return false;
-            return true;
-        }
+    Car GetCar(int carId)
+    {
+        return _cars.FirstOrDefault(c => c.Id == carId);
+    }
+
+    bool RemoveCar(int carId)
+    {
+        _cars.Remove(_cars.FirstOrDefault(c => c.Id == carId));
+        return true;
+    }
+    bool UpdateCar(int carId, Car car)
+    {
+        _cars[_cars.IndexOf(_cars.FirstOrDefault(c => c.Id ==))] = car;
+        return true;
     }
 }
